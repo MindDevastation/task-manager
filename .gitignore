@@ -1,0 +1,24 @@
+# Virtual environment
+venv/
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Django/Migrations
+*/migrations/*
+!*/migrations/__init__.py
+
+# Database
+*.sqlite3
+*.db
+
+# Secrets
+.env
+*.pem
+
+# OS/IDE-specific
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
