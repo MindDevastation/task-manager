@@ -1,24 +1,16 @@
-# Virtual environment
-venv/
 *.pyc
-__pycache__/
-*.pyo
-*.pyd
+*.DS_Store
+*.egg*
+/dist/
+/.idea
+/docs/_build/
+/node_modules/
+build/
+env
+/staticfiles/
 
-# Django/Migrations
-*/migrations/*
-!*/migrations/__init__.py
+#src
+*.sqlite*
 
-# Database
-*.sqlite3
-*.db
-
-# Secrets
 .env
-*.pem
-
-# OS/IDE-specific
-.DS_Store
-Thumbs.db
-.idea/
-.vscode/
+yarn.lock
