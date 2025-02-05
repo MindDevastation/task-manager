@@ -15,6 +15,8 @@ urlpatterns = [
     path("tasks/<int:pk>/toggle-status/", TaskToggleStatusView.as_view(), name="task-toggle-status"),
 
     path("workers/<int:pk>/", WorkerDetailView.as_view(), name="worker-detail"),
+    path('workers/', views.workers_list, name='workers-list'),
+    path('worker/update/', views.worker_update, name='worker-update'),
 
 ]
 

@@ -1,17 +1,23 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 from django.views import View
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 
+from home.forms import WorkerUpdateForm
 from home.models import Task, Worker
 
 
 def index(request):
     if request.user.is_authenticated:
         priority = request.GET.get("priority")
-        tasks = Task.objects.filter(assignees=request.user).filter(priority=priority)
+        if request.user.is_staff:
+            tasks = Task.objects.filter(priority=priority)
+        else:
+            tasks = Task.objects.filter(assignees=request.user).filter(priority=priority)
+
         workers = Worker.objects.all()
     else:
         tasks = Task.objects.none()
@@ -86,3 +92,26 @@ class TaskToggleStatusView(View):
         task.is_completed = not task.is_completed
         task.save()
         return HttpResponseRedirect(reverse("home-app:task-detail", args=[pk]))
+
+def workers_list(request):
+    workers = Worker.objects.all()
+    context = {
+        'workers': workers
+    }
+    return render(request, 'pages/workers_list.html', context)
+
+@login_required
+def worker_update(request):
+    worker = request.user
+    if request.method == 'POST':
+        form = WorkerUpdateForm(request.POST, instance=worker)
+        if form.is_valid():
+            form.save()
+            return redirect('home-app:index')
+    else:
+        form = WorkerUpdateForm(instance=worker)
+
+    context = {
+        'form': form
+    }
+    return render(request, 'pages/worker_update.html', context)

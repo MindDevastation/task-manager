@@ -44,7 +44,7 @@
                         {% endfor %}
                     </ul>
                 </div>
-          <button class="btn btn-white mb-0 ms-auto">View All</button>
+          <a href="{% url 'home-app:workers-list' %}" class="btn btn-primary">View All Workers</a>
         </div>
       </div>
     </div>
@@ -58,9 +58,7 @@
               <p class="text-sm mb-sm-0 mb-2">These are details about your tasks</p>
             </div>
             <div class="ms-auto d-flex">
-              <button type="button" class="btn btn-sm btn-white mb-0 me-2">
-                View Tasks
-              </button>
+              <a href="{% url 'home-app:task-list' %}" class="btn btn-primary">View Tasks</a>
             </div>
           </div>
           <div class="pb-3 d-sm-flex align-items-center">
@@ -104,8 +102,7 @@
                 <td>
                   {% for worker in task.assignees.all %}
                   <li>
-                    <a href="{% url 'home-app:worker-detail' worker.id %}">{{ worker.first_name }} {{ worker.last_name
-                      }}</a>
+                    <a href="{% url 'home-app:worker-detail' worker.id %}">{{ worker.first_name }} {{ worker.last_name }}</a>
                   </li>
                   {% endfor %}
                 </td>
