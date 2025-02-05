@@ -27,9 +27,18 @@ class TaskListView(ListView):
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
-            worker = self.request.user.id
+            queryset = Task.objects.filter(assignees=self.request.user)
 
-            return Task.objects.filter(assignees=worker)
+            search_query = self.request.GET.get("search", "")
+            status_filter = self.request.GET.get("status", "")
+
+            if search_query:
+                queryset = queryset.filter(name__icontains=search_query)
+
+            if status_filter in ["completed", "in_progress"]:
+                queryset = queryset.filter(is_completed=(status_filter == "completed"))
+
+            return queryset
         else:
             return Task.objects.none()
 
