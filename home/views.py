@@ -1,8 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
-from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView, DeleteView, ListView
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse_lazy, reverse
+from django.views import View
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 
 from home.models import Task, Worker
 
@@ -50,3 +51,20 @@ class TaskDeleteView(DeleteView):
     model = Task
     template_name = "pages/task_confirm_delete.html"
     success_url = reverse_lazy("home-app:manager:task-list")
+
+class TaskDetailView(DetailView):
+    model = Task
+    template_name = "pages/task_detail.html"
+    context_object_name = "task"
+
+class WorkerDetailView(DetailView):
+    model = Worker
+    template_name = "pages/worker_detail.html"
+    context_object_name = "worker"
+
+class TaskToggleStatusView(View):
+    def post(self, request, pk):
+        task = get_object_or_404(Task, pk=pk)
+        task.is_completed = not task.is_completed
+        task.save()
+        return HttpResponseRedirect(reverse("home-app:task-detail", args=[pk]))

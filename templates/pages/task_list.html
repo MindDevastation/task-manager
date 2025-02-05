@@ -13,31 +13,39 @@
         <div class="card-body">
           <table class="table align-items-center mb-0">
             <thead>
-              <tr>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Task Name</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Priority</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Deadline</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actions</th>
-              </tr>
+            <tr>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Task Name</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Priority</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Deadline</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actions</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assigned workers</th>
+            </tr>
             </thead>
             <tbody>
-              {% for task in tasks %}
-              <tr>
-                <td>{{ task.name }}</td>
-                <td>{{ task.get_priority_display }}</td>
-                <td>{{ task.deadline }}</td>
-                <td>{% if task.is_completed %}Completed{% else %}Pending{% endif %}</td>
-                <td>
-                  <a href="{% url 'home-app:task-update' task.pk %}" class="btn btn-warning btn-sm">Edit</a>
-                  <a href="{% url 'home-app:task-delete' task.pk %}" class="btn btn-danger btn-sm">Delete</a>
-                </td>
-              </tr>
-              {% empty %}
-              <tr>
-                <td colspan="5" class="text-center">No tasks available</td>
-              </tr>
-              {% endfor %}
+            {% for task in tasks %}
+            <tr>
+              <td><a href="{% url 'home-app:task-detail' task.id %}">{{ task.name }}</a></td>
+              <td>{{ task.get_priority_display }}</td>
+              <td>{{ task.deadline }}</td>
+              <td>{% if task.is_completed %}Completed{% else %}Pending{% endif %}</td>
+              <td>
+                <a href="{% url 'home-app:task-update' task.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{% url 'home-app:task-delete' task.pk %}" class="btn btn-danger btn-sm">Delete</a>
+              </td>
+              <td>
+                {% for worker in task.assignees.all %}
+                <li>
+                  <a href="{% url 'home-app:worker-detail' worker.id %}">{{ worker.first_name }} {{ worker.last_name }}</a>
+                </li>
+                {% endfor %}
+              </td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="5" class="text-center">No tasks available</td>
+            </tr>
+            {% endfor %}
             </tbody>
           </table>
         </div>
