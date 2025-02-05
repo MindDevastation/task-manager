@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from home.views import TaskCreateView, TaskUpdateView, TaskDeleteView
+
 urlpatterns = [
     path('', include('home.urls')),
     path("admin/", admin.site.urls),
-    path("", include('admin_corporate.urls'))
+    path("", include('admin_corporate.urls')),
+    path("tasks/", include('home.urls', namespace="home-app")),
 ]
