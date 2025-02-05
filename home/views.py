@@ -8,17 +8,22 @@ from django.views.generic import CreateView, UpdateView, DeleteView, ListView, D
 from home.models import Task, Worker
 
 
-# Create your views here.
-
 def index(request):
+    if request.user.is_authenticated:
+        priority = request.GET.get("priority")
+        tasks = Task.objects.filter(assignees=request.user).filter(priority=priority)
+        workers = Worker.objects.all()
+    else:
+        tasks = Task.objects.none()
+        workers = Worker.objects.none()
 
-    context = {}
+    context = {
+        "tasks": tasks,
+        "workers": workers,
+    }
 
-    # Add context data here
-    # context['test'] = 'OK'
-
-    # Page from the theme 
     return render(request, "pages/dashboard.html", context=context)
+
 
 class TaskListView(ListView):
     model = Task
@@ -42,6 +47,7 @@ class TaskListView(ListView):
         else:
             return Task.objects.none()
 
+
 class TaskCreateView(CreateView):
     model = Task
     fields = ["name", "description", "deadline", "is_completed", "priority", "task_type", "assignees"]
@@ -61,15 +67,18 @@ class TaskDeleteView(DeleteView):
     template_name = "pages/task_confirm_delete.html"
     success_url = reverse_lazy("home-app:manager:task-list")
 
+
 class TaskDetailView(DetailView):
     model = Task
     template_name = "pages/task_detail.html"
     context_object_name = "task"
 
+
 class WorkerDetailView(DetailView):
     model = Worker
     template_name = "pages/worker_detail.html"
     context_object_name = "worker"
+
 
 class TaskToggleStatusView(View):
     def post(self, request, pk):
