@@ -5,7 +5,7 @@ from .views import TaskCreateView, TaskDeleteView, TaskUpdateView, TaskListView,
     TaskToggleStatusView
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path("", views.index, name="index"),
 
     path("tasks/", TaskListView.as_view(), name="task-list"),
     path("tasks/add/", TaskCreateView.as_view(), name="task-create"),
@@ -15,8 +15,8 @@ urlpatterns = [
     path("tasks/<int:pk>/toggle-status/", TaskToggleStatusView.as_view(), name="task-toggle-status"),
 
     path("workers/<int:pk>/", WorkerDetailView.as_view(), name="worker-detail"),
-    path('workers/', views.workers_list, name='workers-list'),
-    path('worker/update/', views.worker_update, name='worker-update'),
+    path("workers/", views.workers_list, name="workers-list"),
+    path("worker/update/", views.worker_update, name="worker-update"),
 
 ]
 

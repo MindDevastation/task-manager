@@ -96,22 +96,22 @@ class TaskToggleStatusView(View):
 def workers_list(request):
     workers = Worker.objects.all()
     context = {
-        'workers': workers
+        "workers": workers
     }
-    return render(request, 'pages/workers_list.html', context)
+    return render(request, "pages/workers_list.html", context)
 
 @login_required
 def worker_update(request):
     worker = request.user
-    if request.method == 'POST':
+    if request.method == "POST":
         form = WorkerUpdateForm(request.POST, instance=worker)
         if form.is_valid():
             form.save()
-            return redirect('home-app:index')
+            return redirect("home-app:index")
     else:
         form = WorkerUpdateForm(instance=worker)
 
     context = {
-        'form': form
+        "form": form
     }
-    return render(request, 'pages/worker_update.html', context)
+    return render(request, "pages/worker_update.html", context)
