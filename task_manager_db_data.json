@@ -64,7 +64,7 @@
       "first_name": "John",
       "last_name": "Doe",
       "email": "user1@example.com",
-      "password": "password123",
+      "password": "pbkdf2_sha256$600000$JCOToz07id4aqmQWamZwuN$GBLK/DnyAiwmxIhAqaVzmjj482fwrb17hr6xOaGQO2E=",
       "position": 1,
       "is_staff": false
     }
@@ -77,7 +77,7 @@
       "first_name": "Jane",
       "last_name": "Doe",
       "email": "user2@example.com",
-      "password": "password123",
+      "password": "pbkdf2_sha256$600000$JCOToz07id4aqmQWamZwuN$GBLK/DnyAiwmxIhAqaVzmjj482fwrb17hr6xOaGQO2E=",
       "position": 2,
       "is_staff": false
     }
@@ -86,13 +86,14 @@
     "model": "home.worker",
     "pk": 3,
     "fields": {
-      "username": "admin",
+      "username": "testadmin",
       "first_name": "Admin",
       "last_name": "User",
       "email": "admin@example.com",
-      "password": "adminpass",
+      "password": "pbkdf2_sha256$600000$JCOToz07id4aqmQWamZwuN$GBLK/DnyAiwmxIhAqaVzmjj482fwrb17hr6xOaGQO2E=",
       "position": 3,
-      "is_staff": true
+      "is_staff": true,
+      "is_superuser": true
     }
   },
   {
@@ -103,7 +104,7 @@
       "first_name": "Mod",
       "last_name": "One",
       "email": "mod1@example.com",
-      "password": "password123",
+      "password": "pbkdf2_sha256$600000$JCOToz07id4aqmQWamZwuN$GBLK/DnyAiwmxIhAqaVzmjj482fwrb17hr6xOaGQO2E=",
       "position": 4,
       "is_staff": true
     }
@@ -116,7 +117,7 @@
       "first_name": "Mod",
       "last_name": "Two",
       "email": "mod2@example.com",
-      "password": "password123",
+      "password": "pbkdf2_sha256$600000$JCOToz07id4aqmQWamZwuN$GBLK/DnyAiwmxIhAqaVzmjj482fwrb17hr6xOaGQO2E=",
       "position": 4,
       "is_staff": true
     }
@@ -129,7 +130,7 @@
       "first_name": "Alex",
       "last_name": "Smith",
       "email": "worker1@example.com",
-      "password": "workerpass",
+      "password": "pbkdf2_sha256$600000$JCOToz07id4aqmQWamZwuN$GBLK/DnyAiwmxIhAqaVzmjj482fwrb17hr6xOaGQO2E=",
       "position": 1,
       "is_staff": false
     }
@@ -142,7 +143,7 @@
       "first_name": "Alice",
       "last_name": "Brown",
       "email": "worker2@example.com",
-      "password": "workerpass",
+      "password": "pbkdf2_sha256$600000$JCOToz07id4aqmQWamZwuN$GBLK/DnyAiwmxIhAqaVzmjj482fwrb17hr6xOaGQO2E=",
       "position": 2,
       "is_staff": false
     }
@@ -155,7 +156,7 @@
       "first_name": "Robert",
       "last_name": "Johnson",
       "email": "worker3@example.com",
-      "password": "workerpass",
+      "password": "pbkdf2_sha256$600000$JCOToz07id4aqmQWamZwuN$GBLK/DnyAiwmxIhAqaVzmjj482fwrb17hr6xOaGQO2E=",
       "position": 3,
       "is_staff": false
     }
@@ -168,7 +169,7 @@
       "first_name": "Lisa",
       "last_name": "Davis",
       "email": "worker4@example.com",
-      "password": "workerpass",
+      "password": "pbkdf2_sha256$600000$JCOToz07id4aqmQWamZwuN$GBLK/DnyAiwmxIhAqaVzmjj482fwrb17hr6xOaGQO2E=",
       "position": 1,
       "is_staff": false
     }
@@ -181,7 +182,7 @@
       "first_name": "Michael",
       "last_name": "Martinez",
       "email": "worker5@example.com",
-      "password": "workerpass",
+      "password": "pbkdf2_sha256$600000$JCOToz07id4aqmQWamZwuN$GBLK/DnyAiwmxIhAqaVzmjj482fwrb17hr6xOaGQO2E=",
       "position": 4,
       "is_staff": false
     }
@@ -194,7 +195,7 @@
       "first_name": "David",
       "last_name": "Miller",
       "email": "worker6@example.com",
-      "password": "workerpass",
+      "password": "pbkdf2_sha256$600000$JCOToz07id4aqmQWamZwuN$GBLK/DnyAiwmxIhAqaVzmjj482fwrb17hr6xOaGQO2E=",
       "position": 5,
       "is_staff": false
     }
@@ -207,7 +208,7 @@
       "first_name": "Sophia",
       "last_name": "Garcia",
       "email": "worker7@example.com",
-      "password": "workerpass",
+      "password": "pbkdf2_sha256$600000$JCOToz07id4aqmQWamZwuN$GBLK/DnyAiwmxIhAqaVzmjj482fwrb17hr6xOaGQO2E=",
       "position": 6,
       "is_staff": false
     }
@@ -220,7 +221,7 @@
       "first_name": "Ethan",
       "last_name": "Martinez",
       "email": "worker8@example.com",
-      "password": "workerpass",
+      "password": "pbkdf2_sha256$600000$JCOToz07id4aqmQWamZwuN$GBLK/DnyAiwmxIhAqaVzmjj482fwrb17hr6xOaGQO2E=",
       "position": 7,
       "is_staff": false
     }
@@ -233,7 +234,7 @@
       "first_name": "Olivia",
       "last_name": "Lopez",
       "email": "worker9@example.com",
-      "password": "workerpass",
+      "password": "pbkdf2_sha256$600000$JCOToz07id4aqmQWamZwuN$GBLK/DnyAiwmxIhAqaVzmjj482fwrb17hr6xOaGQO2E=",
       "position": 8,
       "is_staff": false
     }
@@ -246,7 +247,7 @@
       "first_name": "Lucas",
       "last_name": "Hernandez",
       "email": "worker10@example.com",
-      "password": "workerpass",
+      "password": "pbkdf2_sha256$600000$JCOToz07id4aqmQWamZwuN$GBLK/DnyAiwmxIhAqaVzmjj482fwrb17hr6xOaGQO2E=",
       "position": 4,
       "is_staff": false
     }
@@ -259,7 +260,7 @@
       "first_name": "Liam",
       "last_name": "Wilson",
       "email": "worker11@example.com",
-      "password": "workerpass",
+      "password": "pbkdf2_sha256$600000$JCOToz07id4aqmQWamZwuN$GBLK/DnyAiwmxIhAqaVzmjj482fwrb17hr6xOaGQO2E=",
       "position": 1,
       "is_staff": false
     }
@@ -272,7 +273,7 @@
       "first_name": "Mia",
       "last_name": "Taylor",
       "email": "worker12@example.com",
-      "password": "workerpass",
+      "password": "pbkdf2_sha256$600000$JCOToz07id4aqmQWamZwuN$GBLK/DnyAiwmxIhAqaVzmjj482fwrb17hr6xOaGQO2E=",
       "position": 2,
       "is_staff": false
     }
@@ -285,7 +286,7 @@
       "first_name": "Daniel",
       "last_name": "Anderson",
       "email": "worker13@example.com",
-      "password": "workerpass",
+      "password": "pbkdf2_sha256$600000$JCOToz07id4aqmQWamZwuN$GBLK/DnyAiwmxIhAqaVzmjj482fwrb17hr6xOaGQO2E=",
       "position": 3,
       "is_staff": false
     }
@@ -298,7 +299,7 @@
       "first_name": "Emily",
       "last_name": "Thomas",
       "email": "worker14@example.com",
-      "password": "workerpass",
+      "password": "pbkdf2_sha256$600000$JCOToz07id4aqmQWamZwuN$GBLK/DnyAiwmxIhAqaVzmjj482fwrb17hr6xOaGQO2E=",
       "position": 5,
       "is_staff": false
     }
@@ -311,7 +312,7 @@
       "first_name": "James",
       "last_name": "Jackson",
       "email": "worker15@example.com",
-      "password": "workerpass",
+      "password": "pbkdf2_sha256$600000$JCOToz07id4aqmQWamZwuN$GBLK/DnyAiwmxIhAqaVzmjj482fwrb17hr6xOaGQO2E=",
       "position": 6,
       "is_staff": false
     }
