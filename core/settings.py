@@ -28,7 +28,7 @@ if not SECRET_KEY:
     SECRET_KEY = "".join(random.choice(string.ascii_lowercase) for i in range(32))
 
 # Render Deployment Code
-DEBUG = "RENDER" not in os.environ
+DEBUG = False
 
 # HOSTs List
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
@@ -164,6 +164,7 @@ STATICFILES_DIRS = (
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = "/"
+
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 AUTH_USER_MODEL = "home.Worker"
