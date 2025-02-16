@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
-import os, random, string
+import os
+import random
+import string
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -25,7 +27,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
 if not SECRET_KEY:
-    SECRET_KEY = "".join(random.choice(string.ascii_lowercase) for i in range(32))
+    SECRET_KEY = "".join(random.choice(string.ascii_lowercase)
+                         for i in range(32))
 
 # Render Deployment Code
 DEBUG = "RENDER" not in os.environ
@@ -34,7 +37,9 @@ DEBUG = "RENDER" not in os.environ
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 # Add here your deployment HOSTS
-CSRF_TRUSTED_ORIGINS = ["http://localhost:8000", "http://localhost:5085", "http://127.0.0.1:8000",
+CSRF_TRUSTED_ORIGINS = ["http://localhost:8000",
+                        "http://localhost:5085",
+                        "http://127.0.0.1:8000",
                         "http://127.0.0.1:5085"]
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
@@ -121,16 +126,32 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": "django"
+                ".contrib"
+                ".auth"
+                ".password_validation"
+                ".UserAttributeSimilarityValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "NAME": "django"
+                ".contrib"
+                ".auth"
+                ".password_validation"
+                ".MinimumLengthValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        "NAME": "django"
+                ".contrib"
+                ".auth"
+                ".password_validation"
+                ".CommonPasswordValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME": "django"
+                ".contrib"
+                ".auth"
+                ".password_validation"
+                ".NumericPasswordValidator",
     },
 ]
 
@@ -155,8 +176,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
-#if not DEBUG:
-#    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# if not DEBUG:
+#    STATICFILES_STORAGE = "whitenoise
+#    .storage
+#    .CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

@@ -1,7 +1,9 @@
 from django.test import TestCase, Client
-from django.contrib.auth import get_user_model
 from django.urls import reverse
-from home.models import Task, TaskType, Worker, Position
+from home.models import (Task,
+                         TaskType,
+                         Worker,
+                         Position)
 from home.forms import WorkerUpdateForm
 from datetime import date
 
@@ -47,7 +49,8 @@ class TaskViewsTest(TestCase):
     def setUp(self):
         self.client = Client()
         self.position = Position.objects.create(name="Tester")
-        self.worker = Worker.objects.create_user(username="testuser", password="password123")
+        self.worker = Worker.objects.create_user(username="testuser",
+                                                 password="password123")
         self.task_type = TaskType.objects.create(name="Feature")
         self.task = Task.objects.create(
             name="Create dashboard",
@@ -104,8 +107,10 @@ class AuthTests(TestCase):
                                                email="test@example.com")
 
     def test_login(self):
-        response = self.client.post(reverse("login"), {"username": "testuser",
-                                                       "password": "password123"})
+        response = self.client.post(reverse("login"),
+                                    {"username": "testuser",
+                                     "password": "password123"}
+                                    )
         self.assertEqual(response.status_code, 302)
 
     def test_logout(self):
